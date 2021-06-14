@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{54EA226F-AD31-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResPi.PitchManagement.Domain", "ResPi.PitchManagement.Domain\ResPi.PitchManagement.Domain.csproj", "{F8C34D32-5C88-4AB9-9261-43622A92CC6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResPi.PitchManagement.Application", "ResPi.PitchManagement.Application\ResPi.PitchManagement.Application.csproj", "{FDF263ED-99A3-4376-BA87-DC4A5D34050A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{F8C34D32-5C88-4AB9-9261-43622A92CC6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8C34D32-5C88-4AB9-9261-43622A92CC6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8C34D32-5C88-4AB9-9261-43622A92CC6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF263ED-99A3-4376-BA87-DC4A5D34050A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF263ED-99A3-4376-BA87-DC4A5D34050A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF263ED-99A3-4376-BA87-DC4A5D34050A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF263ED-99A3-4376-BA87-DC4A5D34050A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,6 +41,7 @@ Global
 		{6ACBB32E-1B27-44D6-9439-3549958FC726} = {B15AB883-71C5-400E-B7F1-3CFFEA1B2820}
 		{54EA226F-AD31-4FC9-A9C0-1750A25E0E48} = {B15AB883-71C5-400E-B7F1-3CFFEA1B2820}
 		{F8C34D32-5C88-4AB9-9261-43622A92CC6A} = {E98CEE2B-1A96-4400-9A1E-8A28D7EA90BD}
+		{FDF263ED-99A3-4376-BA87-DC4A5D34050A} = {E98CEE2B-1A96-4400-9A1E-8A28D7EA90BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F0B13F7-72F8-4429-B3C8-5A0D9D6D1956}
