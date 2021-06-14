@@ -9,7 +9,7 @@ namespace ResPi.PitchManagement.Domain.Entities
 {
     public class Order : AuditableEntity
     {
-        public Guid Id { get; set; }
+        public Guid ID { get; set; }
         public Guid UserID { get; set; }
         public int OrderTotal { get; set; }
         public DateTime OrderPlaced { get; set; }
