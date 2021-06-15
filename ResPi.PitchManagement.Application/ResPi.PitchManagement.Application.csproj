@@ -14,4 +14,8 @@
     <ProjectReference Include="..\ResPi.PitchManagement.Domain\ResPi.PitchManagement.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Events\Commands\CreateEvent\" />
+  </ItemGroup>
+
 </Project>
