@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using ResPi.PitchManagement.Application.Features.Categories.Queries.GetCategoriesList;
 using ResPi.PitchManagement.Application.Features.Events;
 using ResPi.PitchManagement.Domain.Entities;
 
@@ -16,6 +17,7 @@ namespace ResPi.PitchManagement.Application.Profiles
             CreateMap<Event, EventListVm>().ReverseMap();
             CreateMap<Event, EventDetailVm>().ReverseMap();
             CreateMap<Category, CategoryDto>();
+            CreateMap<Category, CategoryListVm>();
         }
     }
 }
