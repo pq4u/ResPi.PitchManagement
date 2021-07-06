@@ -6,7 +6,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using ResPi.PitchManagement.Application.Contracts.Infrastructure;
 using ResPi.PitchManagement.Application.Contracts.Persistence;
+using ResPi.PitchManagement.Application.Models.Mail;
 using ResPi.PitchManagement.Domain.Entities;
 
 namespace ResPi.PitchManagement.Application.Features.Events.Commands.CreateEvent
@@ -15,11 +17,13 @@ namespace ResPi.PitchManagement.Application.Features.Events.Commands.CreateEvent
     {
         private readonly IEventRepository _eventRepository;
         private readonly IMapper _mapper;
+        private readonly IEmailService _emailService;
 
-        public CreateEventCommandHandler(IMapper mapper, IEventRepository eventRepository)
+        public CreateEventCommandHandler(IMapper mapper, IEventRepository eventRepository, IEmailService emailService)
         {
             _mapper = mapper;
             _eventRepository = eventRepository;
+            _emailService = emailService;
         }
 
 
@@ -36,6 +40,22 @@ namespace ResPi.PitchManagement.Application.Features.Events.Commands.CreateEvent
             var @event = _mapper.Map<Event>(request);
 
             @event = await _eventRepository.AddAsync(@event);
+
+            var email = new Email()
+            {
+                To = "robertkurwixa@gmail.com",
+                Body = $"A new event was created: {request}",
+                Subject = $"New event: {request}"
+            };
+
+            try
+            {
+                await _emailService.SendEmail(email);
+            }
+            catch (Exception ex)
+            {
+
+            }
 
             return @event.EventID;
         }
