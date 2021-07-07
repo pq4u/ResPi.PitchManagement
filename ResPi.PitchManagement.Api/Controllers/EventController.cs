@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ResPi.PitchManagement.Application.Features.Events.Queries.GetEventsExport;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using ResPi.PitchManagement.Application.Features.Events;
 using ResPi.PitchManagement.Application.Features.Events.Commands.CreateEvent;
 using ResPi.PitchManagement.Application.Features.Events.Commands.DeleteEvent;
@@ -35,7 +35,7 @@ namespace ResPi.PitchManagement.Api.Controllers
         [HttpGet("{id}", Name = "GetEventById")]
         public async Task<ActionResult<EventDetailVm>> GetEventById(Guid id)
         {
-            var getEventDetailQuery = new GetEventDetailQuery() {ID = id};
+            var getEventDetailQuery = new GetEventDetailQuery() { ID = id };
             return Ok(await _mediator.Send(getEventDetailQuery));
         }
 
@@ -62,9 +62,17 @@ namespace ResPi.PitchManagement.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var deleteEventCommand = new DeleteEventCommand() {EventID = id};
+            var deleteEventCommand = new DeleteEventCommand() { EventID = id };
             await _mediator.Send(deleteEventCommand);
             return NoContent();
+        }
+
+        [HttpGet("export", Name = "ExportEvents")]
+        public async Task<FileResult> ExportEvents()
+        {
+            var fileDto = await _mediator.Send(new GetEventsExportQuery());
+
+            return File(fileDto.Data, fileDto.ContentType, fileDto.EventExportFileName);
         }
     }
 }

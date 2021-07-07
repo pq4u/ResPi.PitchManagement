@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ResPi.PitchManagement.Application.Contracts.Infrastructure;
 using ResPi.PitchManagement.Application.Models.Mail;
+using ResPi.PitchManagement.Infrastructure.FileExport;
 using ResPi.PitchManagement.Infrastructure.Mail;
 
 namespace ResPi.PitchManagement.Infrastructure
@@ -19,6 +20,7 @@ namespace ResPi.PitchManagement.Infrastructure
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
 
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<ICsvExporter, CsvExporter>();
 
             return services;
         }
