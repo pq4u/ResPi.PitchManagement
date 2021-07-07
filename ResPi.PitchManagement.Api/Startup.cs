@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
+using ResPi.PitchManagement.Api.Utility;
 using ResPi.PitchManagement.Application;
 using ResPi.PitchManagement.Infrastructure;
 using ResPi.PitchManagement.Persistence;
@@ -26,7 +29,7 @@ namespace ResPi.PitchManagement.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            AddSwagger(services);
             services.AddApplicationServices();
             services.AddInfrastructureServices(Configuration);
             services.AddPersistenceServices(Configuration);
@@ -35,6 +38,20 @@ namespace ResPi.PitchManagement.Api
             services.AddCors(options =>
             {
                 options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
+        }
+
+        private void AddSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "respi api",
+
+                });
+                c.OperationFilter<FileResultContentTypeOperationFilter>();
             });
         }
 
@@ -48,6 +65,13 @@ namespace ResPi.PitchManagement.Api
 
             app.UseHttpsRedirection();
             app.UseRouting();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "respi api");
+            });
+
             app.UseCors();
 
             app.UseEndpoints(endpoints =>
