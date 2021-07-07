@@ -17,7 +17,7 @@ namespace ResPi.PitchManagement.Persistence
             IConfiguration configuration)
         {
             services.AddDbContext<ResPiDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("ResPiTicketManagementConnectionString")));
+                options.UseSqlServer(configuration.GetConnectionString("ResPiPitchManagementConnectionString")));
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 

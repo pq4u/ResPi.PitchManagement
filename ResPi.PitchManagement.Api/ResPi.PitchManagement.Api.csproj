@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ResPi.PitchManagement.Application\ResPi.PitchManagement.Application.csproj" />
+    <ProjectReference Include="..\ResPi.PitchManagement.Infrastructure\ResPi.PitchManagement.Infrastructure.csproj" />
+    <ProjectReference Include="..\ResPi.PitchManagement.Persistence\ResPi.PitchManagement.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+</Project>
